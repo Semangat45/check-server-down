@@ -7,7 +7,7 @@ curl -I http://example.com
 If nginx is running but showing _internal error (error 50x)_, 
 the first thing to do is to check the error messages.
 ```commandline
-less /var/log/ngninx/error.log
+less /var/log/nginx/error.log
 ```
 If the error is permission denied:  
 - make sure user nginx already has access to the file
