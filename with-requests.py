@@ -1,10 +1,9 @@
 import requests  # pip install requests
 
 
-def print_status_code(url):
+def print_status_code(url: str):
     try:
         req = requests.get(url, verify=False)
-
         print(req.status_code)
     except requests.exceptions.ConnectTimeout:
         print("RTO")
