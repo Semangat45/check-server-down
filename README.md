@@ -8,5 +8,5 @@ We'll be using different approaches to achieve it.
 
 ### Status: On Progress  
 - [x] Check server status  
-- [ ] Scheduler  
+- [x] Scheduler  
 - [ ] Notification  
