@@ -1,16 +1,29 @@
 import os
 import time
-
 import schedule
 
 
-def print_from_command(command: str):
-    p = os.popen(command).read()
-    print(p)
+def get_command_output(command: str):
+    command_output = os.popen(command).read()
+    return command_output
+
+
+def curl_command(url: str):
+    return f"curl -I {url} | grep HTTP"
 
 
 def job():
-    print_from_command("curl -I https://google.com | grep HTTP")
+    url = "https://google.com"
+    command = curl_command(url)
+    output = get_command_output(command)
+
+    if "HTTP" not in output:  # presumably request timeout
+        print(f"RTO => {url}")
+
+    # output should be something like: "HTTP/2 200"
+    status_code = output.split()[1]
+    if status_code != "200":  # if not 200 then it's either redirected or error
+        print(status_code + " => " + url)
 
 
 def schedule_job():
@@ -21,4 +34,4 @@ def schedule_job():
 
 
 if __name__ == '__main__':
-    schedule_job()
+    job()
