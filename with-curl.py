@@ -22,7 +22,7 @@ def job():
 
     # output should be something like: "HTTP/2 200"
     status_code = output.split()[1]
-    if status_code != "200":  # if not 200 then it's either redirected or error
+    if status_code != "200":  # if not 200, it means either redirected or error
         print(status_code + " => " + url)
 
 
