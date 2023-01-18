@@ -1,5 +1,5 @@
 ## Introduction
-The purpose of this project is to create an app that check the 
+The purpose of this project is to create scripts that check the 
 status of server with scheduled time. 
 We'll try using 3 different approaches to achieve it.
 1. [curl](with-curl.py)

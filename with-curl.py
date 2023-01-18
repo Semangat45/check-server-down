@@ -14,7 +14,6 @@ def curl_command(url: str):
 
 def process_output(output: str) -> str:
     if "HTTP" not in output:  # presumably request timeout
-        # do something here (send notification for example)
         return "RTO"
 
     # output should be something like: "HTTP/2 200"
@@ -27,7 +26,7 @@ def job():
     command = curl_command(url)
     output = get_command_output(command)
     status = process_output(output)
-    if status != "200":  # if not 200, it means either redirected or error
+    if status != "200":  # if not 200, it means either redirected, error or RTO
         print(status + " => " + url)
 
 
