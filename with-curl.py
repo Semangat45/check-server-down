@@ -12,18 +12,23 @@ def curl_command(url: str):
     return f"curl -I {url} | grep HTTP"
 
 
-def job():
-    url = "https://google.com"
-    command = curl_command(url)
-    output = get_command_output(command)
-
+def process_output(output: str) -> str:
     if "HTTP" not in output:  # presumably request timeout
-        print(f"RTO => {url}")
+        return "RTO"
 
     # output should be something like: "HTTP/2 200"
     status_code = output.split()[1]
     if status_code != "200":  # if not 200, it means either redirected or error
-        print(status_code + " => " + url)
+        return status_code
+
+
+def job():
+    url = "https://bmn.bkn.go.id"
+    command = curl_command(url)
+    output = get_command_output(command)
+    status = process_output(output)
+
+    print(status + " => " + url)
 
 
 def schedule_job():
