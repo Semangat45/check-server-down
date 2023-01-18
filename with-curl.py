@@ -21,9 +21,11 @@ def process_output(output: str) -> str:
     if status_code != "200":  # if not 200, it means either redirected or error
         return status_code
 
+    return "200"
+
 
 def job():
-    url = "https://bmn.bkn.go.id"
+    url = "https://www.google.com"
     command = curl_command(url)
     output = get_command_output(command)
     status = process_output(output)
